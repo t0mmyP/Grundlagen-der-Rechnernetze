@@ -37,24 +37,24 @@ public class NumberGuessingGameServer{
 
                         if (counter == 6) {
 
-                            out.write("You Lost!".getBytes());
+                            out.write(" You Lost!".getBytes());
                             game = false;
                             break;
 
                         } else if (playerguess == number) {
 
-                            out.write("Congratulation!".getBytes());
+                            out.write(" Congratulation!".getBytes());
                             game = false;
                             break;
 
                         } else if (playerguess < number) {
 
-                            out.write("that's too low!".getBytes());
+                            out.write(" that's too low!".getBytes());
                             counter++;
 
                         } else if (playerguess > number) {
 
-                            out.write("that's too high!".getBytes());
+                            out.write(" that's too high!".getBytes());
                             counter++;
                         }
                         input = "";
