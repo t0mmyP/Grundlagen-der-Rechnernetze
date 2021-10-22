@@ -21,12 +21,10 @@ public class NumberGuessingGameServer {
         String output2 = "Guess now! \n";
 
         OutputStream out = null;
-        OutputStream ot = null;
         try {
             out = socket.getOutputStream();
-            ot = socket.getOutputStream();
-            out.write(output2.getBytes());
             out.write(output.getBytes());
+            out.write(output2.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,12 +41,12 @@ public class NumberGuessingGameServer {
                 }
                 if (number == guess && guess > 0 && guess <= 50) {
                     output = "You won! The number was " + number + " \n";
-                    ot.write(output.getBytes());
+                    out.write(output.getBytes());
                     break;
                 }
                 if (count == 0) {
                     output = "You lost \n";
-                    ot.write(output.getBytes());
+                    out.write(output.getBytes());
                     break;
                 }
                 if (number < guess && guess > 0 && guess <= 50) {
@@ -59,19 +57,17 @@ public class NumberGuessingGameServer {
                 }
 
                 output2 = "Still " + (count) + " tries left \n";
-                ot.write(output.getBytes());
-                ot.write(output2.getBytes());
+                out.write(output.getBytes());
+                out.write(output2.getBytes());
 
             }
             out.write("bye bye\n".getBytes());
             out.flush();
-            ot.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         out.close();
-        ot.close();
         serverSocket.close();
         socket.close();
     }
